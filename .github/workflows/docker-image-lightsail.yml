@@ -31,7 +31,8 @@ jobs:
         curl "https://s3.us-west-2.amazonaws.com/lightsailctl/latest/linux-amd64/lightsailctl" -o "/usr/local/bin/lightsailctl"
         sudo chmod +x /usr/local/bin/lightsailctl
 
-    - name: check Lightsail
+    - name: Push image to Lightsail
+      # Note. This will not deploy. Use the AWS console to replace any existing deployment.
       shell: bash
       run: |
         aws lightsail push-container-image --region eu-west-2 --service-name container-service-1 --image dash-example:latest --label dash-example
