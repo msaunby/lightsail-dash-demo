@@ -18,7 +18,7 @@ jobs:
       with:
         # Get role ARN from AWS IAM console
         role-to-assume: arn:aws:iam::512081954320:role/lightsail-deploy
-        aws-region: eu-west-1
+        aws-region: us-east-1
         role-session-name: MySessionName
     - name: check Lightsail
       run: |
