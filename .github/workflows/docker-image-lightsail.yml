@@ -13,6 +13,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build --build-arg VERSION=test .
+    - name: Configure AWS credentials from my account
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        # Get role ARN from AWS IAM console
+        # role-to-assume: arn:aws:iam::0000:role/github-xxxx
+        aws-region: eu-west-1
+        role-session-name: MySessionName
     - name: check Lightsail
       run: |
-        aws lightsail help
+        aws lightsail push-container-image --region eu-west-2 --service-name container-service-1 --image dash-example:latest --label dash-example

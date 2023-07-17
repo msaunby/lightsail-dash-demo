@@ -28,5 +28,5 @@ To install manually, see <https://dash.plotly.com/installation>
 
 You probably shouldn't do this manually, but if you did the command would look something like this -
 ```sh
-% % aws lightsail push-container-image --region eu-west-2 --service-name container-demo --image dash-example:latest --label nom 
+% % aws lightsail push-container-image --region eu-west-2 --service-name container-service-1 --image dash-example:latest --label dash-example 
 ```
