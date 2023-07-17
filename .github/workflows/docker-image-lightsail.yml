@@ -3,6 +3,11 @@ name: Docker Image deploy to AWS Lightsail
 on:
   workflow_dispatch:
 
+# These permissions are needed to interact with GitHub's OIDC Token endpoint.
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
 
   build:
@@ -18,7 +23,7 @@ jobs:
       with:
         # Get role ARN from AWS IAM console
         role-to-assume: arn:aws:iam::512081954320:role/lightsail-deploy
-        aws-region: us-east-1
+        aws-region: eu-west-2
         role-session-name: MySessionName
     - name: check Lightsail
       run: |
