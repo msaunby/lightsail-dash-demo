@@ -25,6 +25,13 @@ jobs:
         role-to-assume: arn:aws:iam::512081954320:role/lightsail-deploy
         aws-region: eu-west-2
         role-session-name: MySessionName
+    - name: Install AWS Lightsail plugin
+      shell: bash
+      run: |
+        curl "https://s3.us-west-2.amazonaws.com/lightsailctl/latest/linux-amd64/lightsailctl" -o "/usr/local/bin/lightsailctl"
+        sudo chmod +x /usr/local/bin/lightsailctl
+
     - name: check Lightsail
+      shell: bash
       run: |
         aws lightsail push-container-image --region eu-west-2 --service-name container-service-1 --image dash-example:latest --label dash-example
